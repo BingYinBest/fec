@@ -20,7 +20,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Android NDK r26d
-        uses: android-ndk/ndk-setup@v1
+        uses: nttld/setup-ndk@v1
+        id: setup-ndk
         with:
           ndk-version: r26d
           add-to-path: false
@@ -28,7 +29,7 @@ jobs:
       - name: Build static fec (${{ matrix.arch }})
         run: ./build.sh ${{ matrix.arch }}
         env:
-          NDK: $ANDROID_NDK_HOME
+          NDK: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
