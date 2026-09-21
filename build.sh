@@ -14,7 +14,7 @@ OUT="$ROOT/out/$ARCH"
 OBJ="$OUT/obj"
 mkdir -p "$OBJ"
 
-COMMON_FLAGS=(-O2 -g -D_LARGEFILE64_SOURCE -DFEC_NO_KLOG
+COMMON_FLAGS=(-O2 -g -D_LARGEFILE64_SOURCE -DFEC_NO_KLOG -DFEC_DISABLE_FDSAN
   -Isrc -Isrc/libfec -Isrc/libfec/include -Isrc/libfec_rs
   -Ideps/include -Ideps/zlib)
 
