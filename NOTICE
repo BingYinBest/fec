@@ -1,0 +1,42 @@
+This project builds the `fec` command-line tool from AOSP sources for use
+on Android devices (e.g. together with avbtool). It vendors the following
+upstream sources:
+
+- verity/fec (main.cpp, image.cpp, image.h)      - Apache-2.0
+  https://android.googlesource.com/platform/system/extras/+/refs/heads/main/verity/fec
+
+- libfec (fec_open.cpp, fec_read.cpp, fec_verity.cpp, fec_process.cpp,
+  avb_utils_stub.cpp, include/fec/*.h)           - Apache-2.0
+  https://android.googlesource.com/platform/system/extras/+/refs/heads/main/libfec
+
+- libfec_rs (external/fec: encode_rs_char.c, decode_rs_char.c,
+  init_rs_char.c and headers)                    - LGPL-2.1
+  https://android.googlesource.com/platform/external/fec/+/refs/heads/main
+
+- libsparse                                     - Apache-2.0
+  https://android.googlesource.com/platform/system/core/+/refs/heads/main/libsparse
+
+- squashfs_utils (squashfs_utils.c/.h)          - Apache-2.0
+  https://android.googlesource.com/platform/system/extras/+/refs/heads/main/squashfs_utils
+
+- ext4_utils headers (ext4_sb.h and friends)    - Apache-2.0
+  https://android.googlesource.com/platform/system/extras/+/refs/heads/main/ext4_utils
+
+- libbase headers (android-base/*.h)            - Apache-2.0
+  https://android.googlesource.com/platform/system/libbase/+/refs/heads/main
+
+- libcutils headers (cutils/klog.h, cutils/fs.h)- Apache-2.0
+  https://android.googlesource.com/platform/system/core/+/refs/heads/main/libcutils
+
+- utils/Compat.h                                - Apache-2.0
+  https://android.googlesource.com/platform/system/core/+/refs/heads/main/include/utils
+
+- zlib (deps/zlib)                              - zlib license
+  https://android.googlesource.com/platform/external/zlib/+/refs/heads/main
+
+- deps/mini/*: standalone implementations of the small subset of
+  libbase / libcrypto (SHA-1, SHA-256, EVP digest) / libcutils used by the
+  tool. Written for this project.
+
+The resulting binary statically links LGPL-2.1 code (libfec_rs); all
+sources are provided in this repository.
